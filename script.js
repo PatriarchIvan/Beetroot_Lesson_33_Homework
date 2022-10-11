@@ -51,13 +51,14 @@ for (let student of newStudents) {
 
 console.log(newStudents);
 
-// LMS 1)
-const shopList = [{ name: 'Bread', value: 0, price: 3.15, isBought: false,},
-    {name: 'Butter',value: 0, price: 6.12, isBought: false,},
-    {name: 'Juice',value: 0, price: 4.99, isBought: false,},
-    {name: 'Milk',value: 0, price: 6.11, isBought: false,},
-    {name: 'Orange',  value: 0,  price: 8.25,  isBought: false,},
-    {name: 'Wine',  value: 0,  price: 15.30,  isBought: false,},
+// LMS
+const shopList = [
+    {name: 'Bread', value: 0, price: 3.15, isBought: false,},
+    {name: 'Butter', value: 0, price: 6.12, isBought: false,},
+    {name: 'Juice', value: 0, price: 4.99, isBought: false,},
+    {name: 'Milk', value: 0, price: 6.11, isBought: false,},
+    {name: 'Orange', value: 0,  price: 8.25, isBought: false,},
+    {name: 'Wine', value: 0,  price: 15.30, isBought: false,},
 ];
 
 const buyProduct = (name) => {
@@ -75,6 +76,7 @@ const buyProduct = (name) => {
 };
 
 const showList = (arr) => {
+    console.log('*****ALREADY BOUGHT*****');
     for (let i = 0; i < arr.length; i++) {
         if(arr[i].isBought === true) {
             console.log(arr[i].name);
@@ -89,16 +91,14 @@ const showList = (arr) => {
 };
 
 const deleteFromList = (name) => {
-    for (let i = 0; i < shopList.length; i++) {
-        if (shopList.name === name) {
-            shopList.pop(shopList[i]);
+    if (typeof name !== 'string') {
+        console.log('Enter correct value');
+    }
+    for (let product of shopList) {
+        if (product.name === name) {
+            console.log(`You\'ve sucessfully removed ${name} from your shoplist!`);
+            let index = shopList.indexOf((product));
+            shopList.splice(index, 1);
         }
     }
-    return shopList;
 };
-
-buyProduct('Orange');
-// buyProduct('Bread');
-// showList(shopList);
-deleteFromList('Orange');
-showList(shopList);
