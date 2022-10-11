@@ -26,10 +26,16 @@ for (let i = 0; i < students.length; i++) {
     newStudents[i] = students[i];
 }
 console.log(newStudents);
-newStudents.forEach(elem => {
-    elem.fullName =  elem.name + ' ' + elem.surname;
-    delete(elem.name);
-    delete(elem.surname);
-});
+
+for (let student of newStudents) {
+    student.fullName = student.name + ' ' + student.surname;
+    delete(student.name);
+    delete(student.surname);
+}
+// newStudents.forEach(elem => {
+//     elem.fullName =  elem.name + ' ' + elem.surname;
+//     delete(elem.name);
+//     delete(elem.surname);
+// });
 
 console.log(newStudents);
